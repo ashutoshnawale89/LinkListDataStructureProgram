@@ -46,23 +46,16 @@ Node head;
 			System.out.println("null");
 			
 			}
-	public void deletelast() {
-		if (head==null) {
-			System.out.println("The list is Empty");
-		}
-		else if (head.next==null) { 
-			head=null;            	
-		}
-		Node currNode = head;
-	    Node lastNode = head.next;
-	    while(lastNode.next != null) {
-	           currNode = currNode.next;
-	           lastNode = lastNode.next;
-	       }
-	 
-	       currNode.next = null;
-	   }
-
+//   Search Method
+	public Object search(int input) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data == input)
+                return temp.data+"  is in that LinkedList The Value";
+            temp = temp.next;
+        }
+        return "Not In LinkedList";
+    }
 
 		
       public static void main(String[] args) {
@@ -72,7 +65,6 @@ Node head;
 			list.addlast(30);
 			list.addlast(70);
 			list.printlist();
-			list.deletelast();
-			list.printlist();
+			System.out.println(list.search(30));
 		}
 }
