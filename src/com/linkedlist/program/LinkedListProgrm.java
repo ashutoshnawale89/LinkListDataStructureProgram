@@ -1,6 +1,6 @@
 package com.linkedlist.program;
 
-
+import java.util.Arrays;
 
 public class LinkedListProgrm {
 	Node head;   
@@ -57,46 +57,47 @@ public class LinkedListProgrm {
 		}
 		return "Not In LinkedList";
 	}
+		public void sortByNumber() {
 
-	//  Insert The Value in 3rd Position
-
-		public void insertValue(int num,int data) {
-			Node newNode= new Node(data);
-			if (head == null) {
-				head=newNode;
-			}
-			Node currNode = head;
-			Node currNode1 = head.next;
-			Node currNode2 = currNode1.next;
-			head=currNode;
-			head.next=currNode1;
-			head.next.next=newNode;
-			head.next.next.next=currNode2;
-			return;
-		}
-	//   Delete method   .........delete Value for 3rd Number
-		public void deleteValue() {
-			if (head == null) {
-				System.out.println("List is Empty ");
-			}
-			Node currNode = head;
-			Node currNode1 = head.next;
-			Node currNode2 = currNode1.next.next;
-			head=currNode;
-			head.next=currNode1;		
-			head.next.next=currNode2;
-			currNode2.next=null;
-			return;
-		}
+		 // Node current will point to head
+	        Node currNode = head,  index = null;
+	 
+	        int temp;
+	 
+	        if (head == null) {
+	            return;
+	        }
+	        else {
+	            while (currNode != null) {
+	                index = currNode.next;
+	 
+	                while (index != null) {
+	                    if (currNode.data > index.data) {
+	                        temp = currNode.data;
+	                        currNode.data = index.data;
+	                        index.data = temp;
+	                    }
+	 
+	                    index = index.next;
+	                }
+	                currNode = currNode.next;
+	            }
+	        }
+	    }
+		    
+		
 public static void main(String[] args) {
 
 	LinkedListProgrm list=new LinkedListProgrm();
 	list.addfirst(56);
 	list.addlast(30);
+	list.addfirst(40);
 	list.addlast(70);
-	list.insertValue(3,40);
+	System.out.println("Before The Sorting");
 	list.printlist();
-	list.deleteValue();  //   delete Value for 3rd Number
+	list.sortByNumber();
+	System.out.println("After The Sorting");
 	list.printlist();
+	
 }
 }
