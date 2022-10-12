@@ -74,7 +74,20 @@ public class LinkedListProgrm {
 			head.next.next.next=currNode2;
 			return;
 		}
-
+	//   Delete method   .........delete Value for 3rd Number
+		public void deleteValue() {
+			if (head == null) {
+				System.out.println("List is Empty ");
+			}
+			Node currNode = head;
+			Node currNode1 = head.next;
+			Node currNode2 = currNode1.next.next;
+			head=currNode;
+			head.next=currNode1;		
+			head.next.next=currNode2;
+			currNode2.next=null;
+			return;
+		}
 public static void main(String[] args) {
 
 	LinkedListProgrm list=new LinkedListProgrm();
@@ -82,6 +95,8 @@ public static void main(String[] args) {
 	list.addlast(30);
 	list.addlast(70);
 	list.insertValue(3,40);
+	list.printlist();
+	list.deleteValue();  //   delete Value for 3rd Number
 	list.printlist();
 }
 }
